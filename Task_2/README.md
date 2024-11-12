@@ -1,5 +1,7 @@
 # Task 2. Computer vision. Sentinel-2 image matching
 ## Solution explanation
+[Link to dataset](https://drive.google.com/drive/folders/1d9L5wOyZFgBbL1DjnoxiVJfMIrY1GXzd?usp=sharing)
+
 Solution is divided in three steps:
 * Image preprocessing
 * Feature extraction
@@ -16,15 +18,17 @@ Keypoints are points of interest which define what is interesting or what stands
 Descriptors are concerned with both scale and the orientation of the keypoint, so they help us to match keypoints in different images.
 
 ### Template matching
-FLANN stands for Fast Library for Approximate Nearest Neighbors. It works faster than BF matching, but Brute-Force Matcher could also be used for this task. FLANN would be more useful if we keep the image size as it is. BF matcher matches the descriptors of one set with the closest description of another set. After that I used standard distance for matching ratio 0.7 to remove matches between descriptors that are not close. FLANN uses a collection of algorithms optimized for fast nearest neighbor search in large datasets and for high dimensional features. (https://docs.opencv.org/4.x/dc/dc3/tutorial_py_matcher.html?ref=blog.roboflow.com)
+FLANN stands for Fast Library for Approximate Nearest Neighbors. It works faster than BF matching, but Brute-Force Matcher could also be used for this task. FLANN would be more useful if we keep the image size as it is. BF matcher matches the descriptors of one set with the closest description of another set. After that I used standard distance for matching ratio 0.7 to remove matches between descriptors that are not close. FLANN uses a collection of algorithms optimized for fast nearest neighbor search in large datasets and for high dimensional features. ([Source](https://docs.opencv.org/4.x/dc/dc3/tutorial_py_matcher.html?ref=blog.roboflow.com))
 
 ## Project setup
 All project setup is in "demo.ipynb":
 
 Install necessary packages:
+
 ```!pip install -r requirements.txt```
 
 Running algorithm with adding image pathes, which we want to match as arguments.
+
 ```!python image_matching_algorithm.py --first_image_path /home/sofiiafolv/UCU/test_task_folvarochna/Task_2/dataset/T36UXA_20180726T084009_TCI.jp2 --second_image_path /home/sofiiafolv/UCU/test_task_folvarochna/Task_2/dataset/T36UXA_20180731T083601_TCI.jp2```
 
 Result is saved in file named "matched_image.png"
